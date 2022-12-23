@@ -6,7 +6,7 @@ import torch
 
 from src import UNet
 from train_utils import train_one_epoch, evaluate, create_lr_scheduler
-from my_dataset import DriveDataset
+from my_dataset import VOCSegmentation
 import transforms as T
 
 
@@ -71,13 +71,16 @@ def main(args):
     # 用来保存训练以及验证过程中信息
     results_file = "results{}.txt".format(datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
 
-    train_dataset = DriveDataset(args.data_path,
-                                 train=True,
-                                 transforms=get_transform(train=True, mean=mean, std=std))
+    train_dataset = VOCSegmentation(args.data_path,
+                                    year="2012",
+                                    transforms=get_transform(train=True),
+                                    txt_name="train.txt")
 
-    val_dataset = DriveDataset(args.data_path,
-                               train=False,
-                               transforms=get_transform(train=False, mean=mean, std=std))
+    # VOCdevkit -> VOC2012 -> ImageSets -> Segmentation -> val.txt
+    val_dataset = VOCSegmentation(args.data_path,
+                                  year="2012",
+                                  transforms=get_transform(train=False),
+                                  txt_name="val.txt")
 
     num_workers = min([os.cpu_count(), batch_size if batch_size > 1 else 0, 8])
     train_loader = torch.utils.data.DataLoader(train_dataset,
@@ -164,11 +167,11 @@ def parse_args():
     import argparse
     parser = argparse.ArgumentParser(description="pytorch unet training")
 
-    parser.add_argument("--data-path", default="./", help="DRIVE root")
+    parser.add_argument("--data-path", default="D:/dataset/seg", help="DRIVE root")
     # exclude background
     parser.add_argument("--num-classes", default=1, type=int)
     parser.add_argument("--device", default="cuda", help="training device")
-    parser.add_argument("-b", "--batch-size", default=4, type=int)
+    parser.add_argument("-b", "--batch-size", default=2, type=int)
     parser.add_argument("--epochs", default=100, type=int, metavar="N",
                         help="number of total epochs to train")
 

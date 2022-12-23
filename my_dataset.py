@@ -1,50 +1,46 @@
 import os
+
+import torch.utils.data as data
 from PIL import Image
-import numpy as np
-from torch.utils.data import Dataset
 
 
-class DriveDataset(Dataset):
-    def __init__(self, root: str, train: bool, transforms=None):
-        super(DriveDataset, self).__init__()
-        self.flag = "training" if train else "test"
-        data_root = os.path.join(root, "DRIVE", self.flag)
-        assert os.path.exists(data_root), f"path '{data_root}' does not exists."
+class VOCSegmentation(data.Dataset):
+    def __init__(self, voc_root, year="2012", transforms=None, txt_name: str = "train.txt"):
+        super(VOCSegmentation, self).__init__()
+        assert year in ["2007", "2012"], "year must be in ['2007', '2012']"
+        root = os.path.join(voc_root, "VOCdevkit", f"VOC{year}")
+        assert os.path.exists(root), "path '{}' does not exist.".format(root)
+        image_dir = os.path.join(root, 'JPEGImages')
+        mask_dir = os.path.join(root, 'SegmentationClass')
+
+        txt_path = os.path.join(root, "ImageSets", "Segmentation", txt_name)
+        assert os.path.exists(txt_path), "file '{}' does not exist.".format(txt_path)
+        with open(os.path.join(txt_path), "r") as f:
+            file_names = [x.strip() for x in f.readlines() if len(x.strip()) > 0]
+
+        self.images = [os.path.join(image_dir, x + ".png") for x in file_names]
+        self.masks = [os.path.join(mask_dir, x + ".png") for x in file_names]
+        assert (len(self.images) == len(self.masks))
         self.transforms = transforms
-        img_names = [i for i in os.listdir(os.path.join(data_root, "images")) if i.endswith(".tif")]
-        self.img_list = [os.path.join(data_root, "images", i) for i in img_names]
-        self.manual = [os.path.join(data_root, "1st_manual", i.split("_")[0] + "_manual1.gif")
-                       for i in img_names]
-        # check files
-        for i in self.manual:
-            if os.path.exists(i) is False:
-                raise FileNotFoundError(f"file {i} does not exists.")
 
-        self.roi_mask = [os.path.join(data_root, "mask", i.split("_")[0] + f"_{self.flag}_mask.gif")
-                         for i in img_names]
-        # check files
-        for i in self.roi_mask:
-            if os.path.exists(i) is False:
-                raise FileNotFoundError(f"file {i} does not exists.")
+    def __getitem__(self, index):
+        """
+        Args:
+            index (int): Index
 
-    def __getitem__(self, idx):
-        img = Image.open(self.img_list[idx]).convert('RGB')
-        manual = Image.open(self.manual[idx]).convert('L')
-        manual = np.array(manual) / 255
-        roi_mask = Image.open(self.roi_mask[idx]).convert('L')
-        roi_mask = 255 - np.array(roi_mask)
-        mask = np.clip(manual + roi_mask, a_min=0, a_max=255)
-
-        # 这里转回PIL的原因是，transforms中是对PIL数据进行处理
-        mask = Image.fromarray(mask)
+        Returns:
+            tuple: (image, target) where target is the image segmentation.
+        """
+        img = Image.open(self.images[index]).convert('RGB')
+        target = Image.open(self.masks[index])
 
         if self.transforms is not None:
-            img, mask = self.transforms(img, mask)
+            img, target = self.transforms(img, target)
 
-        return img, mask
+        return img, target
 
     def __len__(self):
-        return len(self.img_list)
+        return len(self.images)
 
     @staticmethod
     def collate_fn(batch):
@@ -55,6 +51,7 @@ class DriveDataset(Dataset):
 
 
 def cat_list(images, fill_value=0):
+    # 计算该batch数据中，channel, h, w的最大值
     max_size = tuple(max(s) for s in zip(*[img.shape for img in images]))
     batch_shape = (len(images),) + max_size
     batched_imgs = images[0].new(*batch_shape).fill_(fill_value)
@@ -62,3 +59,7 @@ def cat_list(images, fill_value=0):
         pad_img[..., :img.shape[-2], :img.shape[-1]].copy_(img)
     return batched_imgs
 
+
+# dataset = VOCSegmentation(voc_root="/data/", transforms=get_transform(train=True))
+# d1 = dataset[0]
+# print(d1)
