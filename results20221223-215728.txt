@@ -1,0 +1,13 @@
+[epoch: 0]
+train_loss: 0.6623
+lr: 0.010000
+dice coefficient: 0.540
+global correct: 88.0
+IoU: ['87.0', '40.3']
+mean IoU: 63.7
+global precision: 82.7
+average row precision: ['89.4', '76.0']
+global recall: 71.6
+average row recall: ['96.9', '46.2']
+F1: 76.7
+

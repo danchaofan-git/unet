@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="cf8be13c-75be-4b43-83c8-0c5a4ac5d7cc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/my_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_dataset.py" afterDir="false" />
@@ -89,6 +107,26 @@
       <screen x="0" y="0" width="1707" height="912" />
     </state>
     <state x="634" y="212" key="FileChooserDialogImpl/0.0.1707.912@0.0.1707.912" timestamp="1671799452698" />
+    <state width="1663" height="288" key="GridCell.Tab.0.bottom" timestamp="1671803941979">
+      <screen x="0" y="0" width="1707" height="912" />
+    </state>
+    <state width="1663" height="288" key="GridCell.Tab.0.bottom/0.0.1707.912@0.0.1707.912" timestamp="1671803941979" />
+    <state width="1663" height="288" key="GridCell.Tab.0.center" timestamp="1671803941979">
+      <screen x="0" y="0" width="1707" height="912" />
+    </state>
+    <state width="1663" height="288" key="GridCell.Tab.0.center/0.0.1707.912@0.0.1707.912" timestamp="1671803941979" />
+    <state width="1663" height="288" key="GridCell.Tab.0.left" timestamp="1671803941979">
+      <screen x="0" y="0" width="1707" height="912" />
+    </state>
+    <state width="1663" height="288" key="GridCell.Tab.0.left/0.0.1707.912@0.0.1707.912" timestamp="1671803941979" />
+    <state width="1663" height="288" key="GridCell.Tab.0.right" timestamp="1671803941979">
+      <screen x="0" y="0" width="1707" height="912" />
+    </state>
+    <state width="1663" height="288" key="GridCell.Tab.0.right/0.0.1707.912@0.0.1707.912" timestamp="1671803941979" />
+    <state x="651" y="370" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1671804164240">
+      <screen x="0" y="0" width="1707" height="912" />
+    </state>
+    <state x="651" y="370" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1707.912@0.0.1707.912" timestamp="1671804164240" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/unet$train.coverage" NAME="train Coverage Results" MODIFIED="1671803846409" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
