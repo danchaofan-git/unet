@@ -6,7 +6,7 @@ import torch
 
 from src import UNet
 from train_utils import train_one_epoch, evaluate, create_lr_scheduler
-from my_dataset import VOCSegmentation
+from my_dataset import VOCSegmentation, KaggleCityScapeSegmentation, CityScapeSegmentation
 import transforms as T
 
 
@@ -71,16 +71,20 @@ def main(args):
     # 用来保存训练以及验证过程中信息
     results_file = "results{}.txt".format(datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
 
-    train_dataset = VOCSegmentation(args.data_path,
-                                    year="2012",
-                                    transforms=get_transform(train=True),
-                                    txt_name="train.txt")
+    train_dataset = KaggleCityScapeSegmentation(voc_root=args.data_path,
+                                                txt_root=args.txt_path,
+                                                transforms=get_transform(train=True),
+                                                images_name="trainImages.txt",
+                                                labels_name='trainLabels.txt'
+                                                )
 
     # VOCdevkit -> VOC2012 -> ImageSets -> Segmentation -> val.txt
-    val_dataset = VOCSegmentation(args.data_path,
-                                  year="2012",
-                                  transforms=get_transform(train=False),
-                                  txt_name="val.txt")
+    val_dataset = KaggleCityScapeSegmentation(voc_root=args.data_path,
+                                              txt_root=args.txt_path,
+                                              transforms=get_transform(train=False),
+                                              images_name="valImages.txt",
+                                              labels_name='valLabels.txt'
+                                              )
 
     num_workers = min([os.cpu_count(), batch_size if batch_size > 1 else 0, 8])
     train_loader = torch.utils.data.DataLoader(train_dataset,
@@ -88,13 +92,15 @@ def main(args):
                                                num_workers=num_workers,
                                                shuffle=True,
                                                pin_memory=True,
-                                               collate_fn=train_dataset.collate_fn)
+                                               collate_fn=train_dataset.collate_fn,
+                                               drop_last=True)
 
     val_loader = torch.utils.data.DataLoader(val_dataset,
                                              batch_size=1,
                                              num_workers=num_workers,
                                              pin_memory=True,
-                                             collate_fn=val_dataset.collate_fn)
+                                             collate_fn=val_dataset.collate_fn,
+                                             drop_last=True)
 
     model = create_model(num_classes=num_classes)
     model.to(device)
@@ -167,12 +173,15 @@ def parse_args():
     import argparse
     parser = argparse.ArgumentParser(description="pytorch unet training")
 
-    parser.add_argument("--data-path", default="D:/dataset/seg", help="DRIVE root")
+    parser.add_argument("--data-path", default="F:\dataset\cityscapes\Cityspaces", help="DRIVE root")
     # exclude background
-    parser.add_argument("--num-classes", default=1, type=int)
+    parser.add_argument("--txt-path",
+                        default=r"F:\dataset\cityscapes\Cityspaces\VOCdevkit\VOC2012\ImageSets\Segmentation",
+                        help="ImageSets ID")
+    parser.add_argument("--num-classes", default=19, type=int)
     parser.add_argument("--device", default="cuda", help="training device")
-    parser.add_argument("-b", "--batch-size", default=2, type=int)
-    parser.add_argument("--epochs", default=100, type=int, metavar="N",
+    parser.add_argument("-b", "--batch-size", default=8, type=int)
+    parser.add_argument("--epochs", default=200, type=int, metavar="N",
                         help="number of total epochs to train")
 
     parser.add_argument('--lr', default=0.01, type=float, help='initial learning rate')

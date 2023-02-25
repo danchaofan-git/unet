@@ -1,5 +1,6 @@
 import os
 import time
+import json
 
 import torch
 from torchvision import transforms
@@ -15,16 +16,19 @@ def time_synchronized():
 
 
 def main():
-    classes = 19  # exclude background
+    aux = False  # inference time not need aux_classifier
+    classes = 3
     weights_path = "./save_weights/best_model.pth"
-    img_path = r"dataset\VOCdevkit\VOC2012\JPEGImages\16.png"
-    roi_mask_path = r"dataset\VOCdevkit\VOC2012\SegmentationClass\16.png"
+    img_path = r"dataset\VOCdevkit\VOC2012\JPEGImages\35.png"
+    palette_path = "./palette.json"
     assert os.path.exists(weights_path), f"weights {weights_path} not found."
     assert os.path.exists(img_path), f"image {img_path} not found."
-    assert os.path.exists(roi_mask_path), f"image {roi_mask_path} not found."
-
-    mean = (0.709, 0.381, 0.224)
-    std = (0.127, 0.079, 0.043)
+    assert os.path.exists(palette_path), f"palette {palette_path} not found."
+    with open(palette_path, "rb") as f:
+        pallette_dict = json.load(f)
+        pallette = []
+        for v in pallette_dict.values():
+            pallette += v
 
     # get devices
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
@@ -37,16 +41,14 @@ def main():
     model.load_state_dict(torch.load(weights_path, map_location='cpu')['model'])
     model.to(device)
 
-    # load roi mask
-    roi_img = Image.open(roi_mask_path).convert('L')
-    roi_img = np.array(roi_img)
-
     # load image
-    original_img = Image.open(img_path).convert('RGB')
+    original_img = Image.open(img_path)
 
     # from pil image to tensor and normalize
-    data_transform = transforms.Compose([transforms.ToTensor(),
-                                         transforms.Normalize(mean=mean, std=std)])
+    data_transform = transforms.Compose([transforms.Resize(520),
+                                         transforms.ToTensor(),
+                                         transforms.Normalize(mean=(0.485, 0.456, 0.406),
+                                                              std=(0.229, 0.224, 0.225))])
     img = data_transform(original_img)
     # expand batch dimension
     img = torch.unsqueeze(img, dim=0)
@@ -65,11 +67,8 @@ def main():
 
         prediction = output['out'].argmax(1).squeeze(0)
         prediction = prediction.to("cpu").numpy().astype(np.uint8)
-        # 将前景对应的像素值改成255(白色)
-        prediction[prediction == 1] = 255
-        # 将不敢兴趣的区域像素设置成0(黑色)
-        prediction[roi_img == 0] = 0
         mask = Image.fromarray(prediction)
+        mask.putpalette(pallette)
         mask.save("test_result.png")
 
 

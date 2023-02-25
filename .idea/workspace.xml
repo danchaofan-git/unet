@@ -19,14 +19,27 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf8be13c-75be-4b43-83c8-0c5a4ac5d7cc" name="Default Changelist" comment="">
+    <list default="true" id="cf8be13c-75be-4b43-83c8-0c5a4ac5d7cc" name="Default Changelist" comment="change the dataset format">
+      <change afterPath="$PROJECT_DIR$/get_results.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/p.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_dataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/predict.py" beforeDir="false" afterPath="$PROJECT_DIR$/predict.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results20220109-165837.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/results20221223-215728.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -40,10 +53,82 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\project\deep-learning-for-image-processing-master\pytorch_segmentation\unet" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.train">
+    <configuration name="get_results" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="unet" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/get_results.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="p" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="unet" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/p.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="predict" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="unet" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/predict.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="train" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="unet" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -69,6 +154,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.train" />
+        <item itemvalue="Python.p" />
+        <item itemvalue="Python.predict" />
+        <item itemvalue="Python.get_results" />
       </list>
     </recent_temporary>
   </component>
@@ -84,12 +172,27 @@
       <updated>1662517891155</updated>
       <workItem from="1662517892294" duration="1193000" />
       <workItem from="1671789748091" duration="1069000" />
-      <workItem from="1671803552005" duration="334000" />
+      <workItem from="1671803552005" duration="1213000" />
+      <workItem from="1674560519492" duration="1302000" />
+      <workItem from="1676090069359" duration="1659000" />
+      <workItem from="1676114644865" duration="3919000" />
+      <workItem from="1677291211669" duration="514000" />
     </task>
+    <task id="LOCAL-00001" summary="change the dataset format">
+      <created>1671803928234</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1671803928234</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="requirements.txt" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -101,34 +204,74 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="change the dataset format" />
+    <option name="LAST_COMMIT_MESSAGE" value="change the dataset format" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="634" y="212" key="FileChooserDialogImpl" timestamp="1671799452698">
+    <state x="423" y="206" key="FileChooserDialogImpl" timestamp="1676341466205">
       <screen x="0" y="0" width="1707" height="912" />
     </state>
-    <state x="634" y="212" key="FileChooserDialogImpl/0.0.1707.912@0.0.1707.912" timestamp="1671799452698" />
-    <state width="1663" height="288" key="GridCell.Tab.0.bottom" timestamp="1671803941979">
+    <state x="423" y="206" key="FileChooserDialogImpl/0.0.1707.912@0.0.1707.912" timestamp="1676341466205" />
+    <state width="1663" height="297" key="GridCell.Tab.0.bottom" timestamp="1676341467380">
       <screen x="0" y="0" width="1707" height="912" />
     </state>
-    <state width="1663" height="288" key="GridCell.Tab.0.bottom/0.0.1707.912@0.0.1707.912" timestamp="1671803941979" />
-    <state width="1663" height="288" key="GridCell.Tab.0.center" timestamp="1671803941979">
+    <state width="1663" height="297" key="GridCell.Tab.0.bottom/0.0.1707.912@0.0.1707.912" timestamp="1676341467380" />
+    <state width="1663" height="297" key="GridCell.Tab.0.center" timestamp="1676341467380">
       <screen x="0" y="0" width="1707" height="912" />
     </state>
-    <state width="1663" height="288" key="GridCell.Tab.0.center/0.0.1707.912@0.0.1707.912" timestamp="1671803941979" />
-    <state width="1663" height="288" key="GridCell.Tab.0.left" timestamp="1671803941979">
+    <state width="1663" height="297" key="GridCell.Tab.0.center/0.0.1707.912@0.0.1707.912" timestamp="1676341467380" />
+    <state width="1663" height="297" key="GridCell.Tab.0.left" timestamp="1676341467380">
       <screen x="0" y="0" width="1707" height="912" />
     </state>
-    <state width="1663" height="288" key="GridCell.Tab.0.left/0.0.1707.912@0.0.1707.912" timestamp="1671803941979" />
-    <state width="1663" height="288" key="GridCell.Tab.0.right" timestamp="1671803941979">
+    <state width="1663" height="297" key="GridCell.Tab.0.left/0.0.1707.912@0.0.1707.912" timestamp="1676341467380" />
+    <state width="1663" height="297" key="GridCell.Tab.0.right" timestamp="1676341467380">
       <screen x="0" y="0" width="1707" height="912" />
     </state>
-    <state width="1663" height="288" key="GridCell.Tab.0.right/0.0.1707.912@0.0.1707.912" timestamp="1671803941979" />
+    <state width="1663" height="297" key="GridCell.Tab.0.right/0.0.1707.912@0.0.1707.912" timestamp="1676341467380" />
+    <state width="1663" height="297" key="GridCell.Tab.1.bottom" timestamp="1676341467380">
+      <screen x="0" y="0" width="1707" height="912" />
+    </state>
+    <state width="1663" height="297" key="GridCell.Tab.1.bottom/0.0.1707.912@0.0.1707.912" timestamp="1676341467380" />
+    <state width="1663" height="297" key="GridCell.Tab.1.center" timestamp="1676341467380">
+      <screen x="0" y="0" width="1707" height="912" />
+    </state>
+    <state width="1663" height="297" key="GridCell.Tab.1.center/0.0.1707.912@0.0.1707.912" timestamp="1676341467380" />
+    <state width="1663" height="297" key="GridCell.Tab.1.left" timestamp="1676341467380">
+      <screen x="0" y="0" width="1707" height="912" />
+    </state>
+    <state width="1663" height="297" key="GridCell.Tab.1.left/0.0.1707.912@0.0.1707.912" timestamp="1676341467380" />
+    <state width="1663" height="297" key="GridCell.Tab.1.right" timestamp="1676341467380">
+      <screen x="0" y="0" width="1707" height="912" />
+    </state>
+    <state width="1663" height="297" key="GridCell.Tab.1.right/0.0.1707.912@0.0.1707.912" timestamp="1676341467380" />
     <state x="651" y="370" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1671804164240">
       <screen x="0" y="0" width="1707" height="912" />
     </state>
     <state x="651" y="370" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1707.912@0.0.1707.912" timestamp="1671804164240" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/get_results.py</url>
+          <line>9</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/predict.py</url>
+          <line>54</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/unet$train.coverage" NAME="train Coverage Results" MODIFIED="1671803846409" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/unet$p.coverage" NAME="p Coverage Results" MODIFIED="1676273136594" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/unet$train.coverage" NAME="train Coverage Results" MODIFIED="1677291493220" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/unet$get_results.coverage" NAME="get_results Coverage Results" MODIFIED="1676097300546" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/unet$predict.coverage" NAME="predict Coverage Results" MODIFIED="1676272800510" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
